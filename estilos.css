@@ -1,0 +1,199 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* evita scroll horizontal */
+  background-color: #FDFFEF;
+}
+
+.inicio {
+  position: relative; /* Necesario para posicionar elementos hijos */
+  width: 100%;
+  max-width: 480px; /* Para limitar tamaño en mobile si querés */
+  margin: 0;
+}
+
+.inicio .tarjeta {
+  width: 100%;
+  display: block;
+}
+
+.btn-mapaMob {
+  position: absolute;
+  top: 70%; /* Ajustá según dónde quieras el botón */
+  left: 50%;
+  transform: translate(0%, 25%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.btn-mapaMob img {
+  width: 200px; /* Ajustá tamaño del botón */
+}
+
+section {
+  width: 100%;
+  height: 100vh; /* Alto total de la pantalla */
+  overflow: hidden;
+}
+
+.tarjeta {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ajusta sin recortar */
+  display: block;
+}
+
+/* SECCION INFO */
+.info {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+}
+
+.info .tarjeta {
+  width: 100%;
+  display: block;
+}
+
+.info button {
+position: absolute;
+background-color: rgba(255, 0, 0, 0);
+border: none;
+cursor: pointer;
+color: #f0f8ff00;
+}
+
+/* Ajustes según el diseño del SVG */
+.btn-cuando {
+top: 6%;
+left: 0%;
+width: 100%;
+height: 25%;
+}
+
+.btn-donde {
+top: 35%;
+left: 0%;
+width: 100%;
+height: 27%;
+}
+
+.btn-confirmar {
+top: 64%;
+left: 0%;
+width: 100%;
+height: 33%;
+}
+
+/* CUANDO ESTILOS */
+.cuando {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+}
+
+.cuando .tarjeta {
+  width: 100%;
+  display: block;
+}
+
+.btn-ir-donde {
+    position: absolute;
+    top: 69%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 32%;
+    background-color: rgb(0 255 0 / 0%);
+    border: none;
+    cursor: pointer;
+    COLOR: #f0f8ff00;
+}
+
+/* DONDE ESTILOS */
+.donde {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+}
+
+.donde .tarjeta {
+  width: 100%;
+  display: block;
+}
+
+.btn-ir-confirmar {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 27%;
+    background-color: rgba(0, 0, 255, 0);
+    border: none;
+    cursor: pointer;
+    COLOR: #f0f8ff00;
+}
+
+/* CONFIRMAR ESTILOS */
+.confirmar {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+}
+
+.confirmar .tarjeta {
+  width: 100%;
+  display: block;
+}
+
+.btn-volver-info {
+    position: absolute;
+    top: 88%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 20%;
+    background-color: rgba(255, 166, 0, 0);
+    border: none;
+    cursor: pointer;
+    COLOR: #f0f8ff00;
+}
+
+.btn-link-externo {
+    position: absolute;
+    top: 64%;
+    left: 78%;
+    transform: translateX(-50%);
+    width: 49%;
+    height: 24%;
+    background-color: rgba(255, 0, 255, 0);
+    border: none;
+    cursor: pointer;
+    color: #fdffef00;
+}
+@media (min-width: 768px) {
+
+.inicio{
+    display: none;
+}
+
+}
+
+@media (min-width: 1024px) {
+
+    .inicio{
+        display: none;
+    }
+}

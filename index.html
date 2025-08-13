@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cumpleaños</title>
+    <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+<!-- SECCION INICIO -->
+<section id="inicio" class="inicio">
+    <img src="img/inicio.svg" alt="ubicacion" class="tarjeta mobile" />
+    <button class="btn-mapaMob">
+      <img src="img/btnContinuar.svg" alt="Abrir mapa" />
+    </button>
+  </section> 
+
+<!-- SECCION INFO -->
+<section id="info" class="info" style="display:none;">
+    <img src="img/botonesInfo.svg" alt="Información" class="tarjeta mobile" />
+    <button class="btn-cuando">CUANDO</button>
+    <button class="btn-donde">DONDE</button>
+    <button class="btn-confirmar">CONFIRMAR</button>
+</section>
+
+<!-- SECCION CUANDO -->
+<section id="cuando" class="cuando" style="display:none;">
+    <img src="img/pantallaCuando.svg" alt="Pantalla Cuando" class="tarjeta mobile" />
+    <button class="btn-ir-donde">IR A DONDE</button>
+</section>
+
+<!-- SECCION DONDE -->
+<section id="donde" class="donde" style="display:none;">
+    <img src="img/pantallaDonde.svg" alt="Pantalla Donde" class="tarjeta mobile" />
+    <button class="btn-ir-confirmar">IR A CONFIRMAR</button>
+</section>
+
+<!-- SECCION CONFIRMAR -->
+<section id="confirmar" class="confirmar" style="display:none;">
+    <img src="img/pantallaConfirmar.svg" alt="Pantalla Confirmar" class="tarjeta mobile" />
+    <button class="btn-volver-info">VOLVER A INFO</button>
+    <button class="btn-link-externo">IR A LINK</button>
+</section>
+
+<script>
+  const btnContinuar = document.querySelector('.btn-mapaMob');
+  const pantallaInicio = document.querySelector('#inicio');
+  const pantallaInfo = document.querySelector('#info');
+  const pantallaCuando = document.querySelector('#cuando');
+  const pantallaDonde = document.querySelector('#donde');
+  const pantallaConfirmar = document.querySelector('#confirmar');
+
+
+  btnContinuar.addEventListener('click', () => {
+    pantallaInicio.style.display = 'none';
+    pantallaInfo.style.display = 'block';
+  });
+
+/*   document.querySelector('.btn-cuando').addEventListener('click', () => {
+    alert('Ir a CUANDO');
+  }); */
+
+  document.querySelector('.btn-donde').addEventListener('click', () => {
+  pantallaInfo.style.display = 'none';
+  pantallaDonde.style.display = 'block';
+  });
+
+  document.querySelector('.btn-confirmar').addEventListener('click', () => {
+  pantallaInfo.style.display = 'none';
+  pantallaConfirmar.style.display = 'block';
+  });
+
+document.querySelector('.btn-cuando').addEventListener('click', () => {
+  pantallaInfo.style.display = 'none';
+  pantallaCuando.style.display = 'block';
+});
+
+document.querySelector('.btn-ir-donde').addEventListener('click', () => {
+  pantallaCuando.style.display = 'none';
+  pantallaDonde.style.display = 'block';
+});
+
+document.querySelector('.btn-ir-confirmar').addEventListener('click', () => {
+  pantallaDonde.style.display = 'none';
+  pantallaConfirmar.style.display = 'block';
+});
+
+document.querySelector('.btn-volver-info').addEventListener('click', () => {
+  pantallaConfirmar.style.display = 'none';
+  pantallaInfo.style.display = 'block';
+});
+
+document.querySelector('.btn-link-externo').addEventListener('click', () => {
+  window.open('https://www.ejemplo.com', '_blank'); // Cambia el link aquí
+});
+</script>
+</body>
+</html>
