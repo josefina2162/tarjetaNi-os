@@ -9,6 +9,13 @@
     <meta name="theme-color" content="#000000">
 </head>
 <body> 
+
+<!-- Overlay para fullscreen -->
+<div id="overlay-fullscreen">
+    <h2>¡Toca para abrir la tarjeta en pantalla completa!</h2>
+    <button id="btn-fullscreen">Abrir Tarjeta</button>
+</div>
+
 <!-- SECCION INICIO -->
 <section id="inicio" class="inicio">
     <img src="img/inicio.svg" alt="ubicacion" class="tarjeta mobile" />
@@ -45,6 +52,21 @@
 </section>
 
 <script>
+
+const btnFullscreen = document.getElementById('btn-fullscreen');
+  const overlay = document.getElementById('overlay-fullscreen');
+
+  btnFullscreen.addEventListener('click', () => {
+    const el = document.documentElement;
+
+    if (el.requestFullscreen) el.requestFullscreen();
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    else if (el.msRequestFullscreen) el.msRequestFullscreen();
+
+    overlay.style.display = 'none'; // Oculta el overlay
+    document.getElementById('inicio').style.display = 'block'; // Muestra pantalla inicio
+  });
+  
   const btnContinuar = document.querySelector('.btn-mapaMob');
   const pantallaInicio = document.querySelector('#inicio');
   const pantallaInfo = document.querySelector('#info');
