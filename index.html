@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Cumpleaños</title>
     <link rel="stylesheet" href="estilos.css" />
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
 </head>
-<body>
+<body> 
 <!-- SECCION INICIO -->
 <section id="inicio" class="inicio">
     <img src="img/inicio.svg" alt="ubicacion" class="tarjeta mobile" />
@@ -93,6 +95,12 @@ document.querySelector('.btn-volver-info').addEventListener('click', () => {
 document.querySelector('.btn-link-externo').addEventListener('click', () => {
   window.open('https://www.ejemplo.com', '_blank'); // Cambia el link aquí
 });
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js')
+    .then(() => console.log("Service Worker registrado"));
+}
+
 </script>
 </body>
 </html>
