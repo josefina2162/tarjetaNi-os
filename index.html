@@ -108,9 +108,16 @@
     pantallaInfo.style.display = 'block';
   });
 
-  document.querySelector('.btn-link-externo').addEventListener('click', () => {
+/*   document.querySelector('.btn-link-externo').addEventListener('click', () => {
     window.open('https://www.ejemplo.com', '_blank');
-  });
+  }); */
+
+  document.querySelector('.btn-link-externo').addEventListener('click', () => {
+  const numero = "5492281310784"; // Tu número con código de país y área
+  const mensaje = "Hola! Confirmo mi asistencia a la misión 🚀";
+  const urlWhatsApp = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+  window.open(urlWhatsApp, '_blank');
+});
 
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js')
