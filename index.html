@@ -18,7 +18,7 @@
 
 <!-- SECCION INICIO -->
 <section id="inicio" class="inicio">
-    <img src="img/inicio.svg" alt="ubicacion" class="tarjeta mobile" />
+    <img src="img/inicio_android.svg" alt="ubicacion" class="tarjeta mobile" />
     <button class="btn-mapaMob">
       <img src="img/btnContinuar.svg" alt="Abrir mapa" />
     </button>
@@ -26,7 +26,7 @@
 
 <!-- SECCION INFO -->
 <section id="info" class="info" style="display:none;">
-    <img src="img/botonesInfo.svg" alt="Información" class="tarjeta mobile" />
+    <img src="img/botonesInfo_android.svg" alt="Información" class="tarjeta mobile" />
     <button class="btn-cuando">CUANDO</button>
     <button class="btn-donde">DONDE</button>
     <button class="btn-confirmar">CONFIRMAR</button>
@@ -34,13 +34,13 @@
 
 <!-- SECCION CUANDO -->
 <section id="cuando" class="cuando" style="display:none;">
-    <img src="img/pantallaCuando.svg" alt="Pantalla Cuando" class="tarjeta mobile" />
+    <img src="img/pantallaCuando_android.svg" alt="Pantalla Cuando" class="tarjeta mobile" />
     <button class="btn-ir-donde">IR A DONDE</button>
 </section>
 
 <!-- SECCION DONDE -->
 <section id="donde" class="donde" style="display:none;">
-    <img src="img/pantallaDonde.svg" alt="Pantalla Donde" class="tarjeta mobile" />
+    <img src="img/pantallaDonde_android.svg" alt="Pantalla Donde" class="tarjeta mobile" />
     <button class="btn-ir-confirmar">IR A CONFIRMAR</button>
 </section>
 
@@ -52,8 +52,7 @@
 </section>
 
 <script>
-
-const btnFullscreen = document.getElementById('btn-fullscreen');
+  const btnFullscreen = document.getElementById('btn-fullscreen');
   const overlay = document.getElementById('overlay-fullscreen');
 
   btnFullscreen.addEventListener('click', () => {
@@ -63,8 +62,8 @@ const btnFullscreen = document.getElementById('btn-fullscreen');
     else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
     else if (el.msRequestFullscreen) el.msRequestFullscreen();
 
-    overlay.style.display = 'none'; // Oculta el overlay
-    document.getElementById('inicio').style.display = 'block'; // Muestra pantalla inicio
+    overlay.style.display = 'none';
+    document.getElementById('inicio').style.display = 'block';
   });
   
   const btnContinuar = document.querySelector('.btn-mapaMob');
@@ -74,60 +73,69 @@ const btnFullscreen = document.getElementById('btn-fullscreen');
   const pantallaDonde = document.querySelector('#donde');
   const pantallaConfirmar = document.querySelector('#confirmar');
 
-
   btnContinuar.addEventListener('click', () => {
     pantallaInicio.style.display = 'none';
     pantallaInfo.style.display = 'block';
   });
 
-/*   document.querySelector('.btn-cuando').addEventListener('click', () => {
-    alert('Ir a CUANDO');
-  }); */
-
   document.querySelector('.btn-donde').addEventListener('click', () => {
-  pantallaInfo.style.display = 'none';
-  pantallaDonde.style.display = 'block';
+    pantallaInfo.style.display = 'none';
+    pantallaDonde.style.display = 'block';
   });
 
   document.querySelector('.btn-confirmar').addEventListener('click', () => {
-  pantallaInfo.style.display = 'none';
-  pantallaConfirmar.style.display = 'block';
+    pantallaInfo.style.display = 'none';
+    pantallaConfirmar.style.display = 'block';
   });
 
-document.querySelector('.btn-cuando').addEventListener('click', () => {
-  pantallaInfo.style.display = 'none';
-  pantallaCuando.style.display = 'block';
-});
+  document.querySelector('.btn-cuando').addEventListener('click', () => {
+    pantallaInfo.style.display = 'none';
+    pantallaCuando.style.display = 'block';
+  });
 
-document.querySelector('.btn-ir-donde').addEventListener('click', () => {
-  pantallaCuando.style.display = 'none';
-  pantallaDonde.style.display = 'block';
-});
+  document.querySelector('.btn-ir-donde').addEventListener('click', () => {
+    pantallaCuando.style.display = 'none';
+    pantallaDonde.style.display = 'block';
+  });
 
-document.querySelector('.btn-ir-confirmar').addEventListener('click', () => {
-  pantallaDonde.style.display = 'none';
-  pantallaConfirmar.style.display = 'block';
-});
+  document.querySelector('.btn-ir-confirmar').addEventListener('click', () => {
+    pantallaDonde.style.display = 'none';
+    pantallaConfirmar.style.display = 'block';
+  });
 
-document.querySelector('.btn-volver-info').addEventListener('click', () => {
-  pantallaConfirmar.style.display = 'none';
-  pantallaInfo.style.display = 'block';
-});
+  document.querySelector('.btn-volver-info').addEventListener('click', () => {
+    pantallaConfirmar.style.display = 'none';
+    pantallaInfo.style.display = 'block';
+  });
 
-document.querySelector('.btn-link-externo').addEventListener('click', () => {
-  window.open('https://www.ejemplo.com', '_blank'); // Cambia el link aquí
-});
+  document.querySelector('.btn-link-externo').addEventListener('click', () => {
+    window.open('https://www.ejemplo.com', '_blank');
+  });
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js')
-    .then(() => console.log("Service Worker registrado"));
-}
-
-// Ajuste especial para Safari iOS
-  function esSafariIOS() {
-    return /^((?!chrome|android).)*safari/i.test(navigator.userAgent) && /iP(ad|hone|od)/.test(navigator.userAgent);
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(() => console.log("Service Worker registrado"));
   }
 
+  // Detectar si es Safari en iOS
+  function esSafariIOS() {
+    return /^((?!chrome|android).)*safari/i.test(navigator.userAgent) &&
+           /iP(ad|hone|od)/.test(navigator.userAgent);
+  }
+
+  // Cambiar imágenes según navegador
+  function cambiarImagenesSegunNavegador() {
+    const sufijo = esSafariIOS() ? '_ios.svg' : '_android.svg';
+    document.querySelector('#inicio .tarjeta').src = 'img/inicio' + sufijo;
+    document.querySelector('#info .tarjeta').src = 'img/botonesInfo' + sufijo;
+    document.querySelector('#cuando .tarjeta').src = 'img/pantallaCuando' + sufijo;
+    document.querySelector('#donde .tarjeta').src = 'img/pantallaDonde' + sufijo;
+    document.querySelector('#confirmar .tarjeta').src = 'img/pantallaConfirmar' + sufijo;
+    // Botón continuar
+    document.querySelector('#inicio .btn-mapaMob img').src = 'img/btnContinuar' + sufijo;
+  }
+
+  // Ajustar altura en Safari iOS
   function ajustarAlturaIOS() {
     if (esSafariIOS()) {
       const altoReal = window.innerHeight + 'px';
@@ -143,9 +151,11 @@ if ('serviceWorker' in navigator) {
   }
 
   // Ejecutar al cargar y en cambios de tamaño
-  window.addEventListener('load', ajustarAlturaIOS);
+  window.addEventListener('load', () => {
+    cambiarImagenesSegunNavegador();
+    ajustarAlturaIOS();
+  });
   window.addEventListener('resize', ajustarAlturaIOS);
-
 </script>
 </body>
 </html>
