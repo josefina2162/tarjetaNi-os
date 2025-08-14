@@ -123,6 +123,29 @@ if ('serviceWorker' in navigator) {
     .then(() => console.log("Service Worker registrado"));
 }
 
+// Ajuste especial para Safari iOS
+  function esSafariIOS() {
+    return /^((?!chrome|android).)*safari/i.test(navigator.userAgent) && /iP(ad|hone|od)/.test(navigator.userAgent);
+  }
+
+  function ajustarAlturaIOS() {
+    if (esSafariIOS()) {
+      const altoReal = window.innerHeight + 'px';
+      document.querySelectorAll('section').forEach(sec => {
+        sec.style.height = altoReal;
+      });
+      document.querySelectorAll('.tarjeta').forEach(img => {
+        img.style.height = altoReal;
+        img.style.width = '100%';
+        img.style.objectFit = 'contain';
+      });
+    }
+  }
+
+  // Ejecutar al cargar y en cambios de tamaño
+  window.addEventListener('load', ajustarAlturaIOS);
+  window.addEventListener('resize', ajustarAlturaIOS);
+
 </script>
 </body>
 </html>
